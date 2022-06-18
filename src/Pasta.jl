@@ -104,11 +104,18 @@ function home(c::Connection)
     on(c, new_button, "click") do cm::ComponentModifier
         set_children!(cm, lower_div, file_open("", c))
     end
+    on(c, toolips_button, "click") do cm
+        alert!(cm, "Redirecting to the toolips repo!")
+        redirect!(cm, "https://github.com/ChifiSource/Toolips.jl")
+    end
+    on(c, github_button, "click") do cm
+        alert!(cm, "Redirecting to the pasta repo!")
+        redirect!(cm, "https://github.com/emmettgb/Pasta.jl")
+    end
     style!(new_button, "background-color" => "green")
     write!(c, file_opendiv)
     write!(c, lower_div)
 end
-
 
 fourofour = route("404") do c
     write!(c, p("404message", text = "404, not found!"))
