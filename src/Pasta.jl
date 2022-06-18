@@ -24,7 +24,11 @@ function stylesheet()
     bodys = Style("body")
     bodys["background-color"] = "#729CA2"
     buttons = Style("button", color = "#FFFFFF", border = "none", padding =
-    "10px")
+    "10px", cursor = "pointer")
+    liststyle = Style("li", cursor = "pointer", color = "white")
+    liststyle["background-color"] = "green"
+    liststyle["font-size"] = "12pt"
+    liststyle["padding"] = "4px"
     buttons["background-color"] = "#FF893B"
     buttons["font-size"] = "14pt"
     divs = Style("div", padding = "50px")
@@ -35,7 +39,7 @@ function stylesheet()
     as = Style("a", color = "#465461")
     as["font-family"] = "'Poppins', sans-serif"
     as["font-size"] = "20pt"
-    components(bodys, buttons, divs, font, as, fade_up())
+    components(bodys, liststyle, buttons, divs, font, as, fade_up())
 end
 
 function file_open(s::String, c::Connection)
@@ -75,6 +79,7 @@ function home(c::Connection)
     github_button = button("github_button", text = "This project on Github")
     toolips_button = button("tlbutton", text = "toolips")
     style!(toolips_button, "background-color" => "blue")
+    github_a = a(href = "http://")
     push!(file_opendiv, br(), headimage, br(),
     a("helloworld", text = "welcome to Pasta.jl"), br(),
     github_button, br(), br(), toolips_button)
